@@ -3,14 +3,14 @@
 
 KERNEL_ADDR equ 0x1000
 
+start:
+	mov [BOOT_DRIVE], dl
+	mov bp, 0x9000
+	mov sp, bp
 
-mov [BOOT_DRIVE], dl
-mov bp, 0x9000
-mov sp, bp
-
-call load_kernel
-call enter_protected_mode
-jmp $
+	call load_kernel
+	call enter_protected_mode
+	jmp $
 
 
 load_kernel:
